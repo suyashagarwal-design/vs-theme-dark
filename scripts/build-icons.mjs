@@ -27,6 +27,21 @@ const outDir      = join(root, "icons/colored");
 const themePath   = join(root, "icons/hrds-icon-theme.json");
 const badgeFont   = join(root, "fonts/GeistMono-SemiBold.ttf");
 
+// Transparent padding (in grid units) around the 20×20 icon content. VS Code
+// renders every file icon into a fixed ~16px slot, so widening the viewBox shrinks
+// the visible glyph/badge within that slot — icons read ~17% smaller and gain
+// breathing room, without touching VS Code (works theme-only, no Custom CSS).
+const PAD = 2;
+const VB  = 20 + 2 * PAD;   // 24
+const VIEWBOX = `${-PAD} ${-PAD} ${VB} ${VB}`;
+
+// Re-frame a 20×20 source glyph into the padded viewBox so it matches badge sizing.
+function padViewBox (svg) {
+  return svg
+    .replace('viewBox="0 0 20 20"', `viewBox="${VIEWBOX}"`)
+    .replace('width="20" height="20"', `width="${VB}" height="${VB}"`);
+}
+
 function flattenTokens (tokens) {
   const out = new Map();
   for (const [group, entries] of Object.entries(tokens)) {
@@ -64,7 +79,7 @@ function makeBadge (label, fillHex, textHex, font) {
   const y = cy + capPx / 2;
 
   const d = font.getPath(label, x, y, fontSize).toPathData(2);
-  return `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return `<svg width="${VB}" height="${VB}" viewBox="${VIEWBOX}" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="3" y="2" width="14" height="16" rx="3" fill="${fillHex}"/>
 <path d="${d}" fill="${textHex}"/>
 </svg>
@@ -100,7 +115,7 @@ async function main () {
     if (def.badge) { svg = makeBadge(def.badge, hex, badgeTextHex, font); badges++; }
     else {
       const base = await readFile(join(svgDir, `${def.glyph}.svg`), "utf8");
-      svg = recolorGlyph(base, hex);
+      svg = padViewBox(recolorGlyph(base, hex));
       glyphs++;
     }
     await writeFile(join(outDir, `${id}.svg`), svg, "utf8");

@@ -97,3 +97,30 @@
   height: 28px;
   font-weight: 500;
 }
+
+/* ─── Smaller expand/collapse chevron (codicon font glyph — CSS-only) ── */
+.monaco-workbench .monaco-tl-twistie.codicon::before,
+.monaco-workbench .monaco-tl-twistie::before {
+  font-size: 14px !important;
+}
+
+/* ─── Tree row focus ring: keyboard-only ────────────────────────────────
+   The selection background already shows the active row, so a bright ring on
+   every mouse click is just visual noise — it only earns its keep for keyboard
+   navigation (accessibility). VS Code draws it unconditionally with:
+     .monaco-list:focus .monaco-list-row.focused { outline: 1px solid … !important }
+
+   :focus-visible can't gate this: VS Code focuses the list via script, and the
+   Electron/Chromium build then reports :focus-visible even on a mouse click. So we
+   track modality ourselves in hrds-input-modality.js — html.hrds-pointer means the
+   last interaction was a click.
+
+   VS Code paints this ring with per-instance dynamic rules, the strongest being
+     .monaco-list<id>:focus .monaco-list-row.focused.selected  → specificity (0,6,0)
+   so we must outrank that. `.focused` is repeated to push the class count to (0,7,1)
+   (repeated classes legitimately raise specificity) and it matches any focused row,
+   selected or not. On keyboard nav the class flips to .hrds-keyboard, this rule
+   stops matching, and VS Code's own ring shows through — accessibility intact. */
+html.hrds-pointer .monaco-workbench .monaco-list .monaco-list-row.focused.focused.focused {
+  outline: 0 !important;
+}
