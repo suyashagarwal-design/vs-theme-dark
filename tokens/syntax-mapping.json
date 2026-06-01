@@ -1,0 +1,50 @@
+{
+  "_meta": {
+    "note": "TextMate scope → HRDS token name. Every value on the right is a key in tokens.json. The build script replaces it with the resolved hex; no off-HRDS color is permitted."
+  },
+  "tokenColors": [
+    { "name": "Comment",              "scope": ["comment", "punctuation.definition.comment"],                                "settings": { "foreground": "core/muted-foreground", "fontStyle": "italic" } },
+    { "name": "Variables",            "scope": ["variable", "variable.other.readwrite", "variable.parameter"],               "settings": { "foreground": "core/foreground" } },
+    { "name": "Keyword",              "scope": ["keyword", "keyword.control", "storage", "storage.type", "storage.modifier"],"settings": { "foreground": "decorative/purple" } },
+    { "name": "String",               "scope": ["string", "string.quoted"],                                                  "settings": { "foreground": "buttons/primary" } },
+    { "name": "String escape",        "scope": ["constant.character.escape", "string.regexp"],                               "settings": { "foreground": "buttons/primary-hover" } },
+    { "name": "Number / Boolean",     "scope": ["constant.numeric", "constant.language.boolean", "constant.language.null"],  "settings": { "foreground": "decorative/cyan-accent" } },
+    { "name": "Function call",        "scope": ["entity.name.function", "support.function", "meta.function-call"],           "settings": { "foreground": "decorative/cyan" } },
+    { "name": "Function declaration", "scope": ["entity.name.function.declaration"],                                         "settings": { "foreground": "decorative/cyan" } },
+    { "name": "Type / Class",         "scope": ["entity.name.type", "entity.name.class", "support.class", "support.type"],   "settings": { "foreground": "decorative/cyan-accent" } },
+    { "name": "Constant",             "scope": ["constant", "constant.other", "variable.other.constant"],                    "settings": { "foreground": "decorative/fuscia" } },
+    { "name": "Tag (HTML/JSX)",       "scope": ["entity.name.tag"],                                                          "settings": { "foreground": "decorative/fuscia" } },
+    { "name": "Tag attribute",        "scope": ["entity.other.attribute-name"],                                              "settings": { "foreground": "decorative/cyan-accent", "fontStyle": "italic" } },
+    { "name": "Punctuation",          "scope": ["punctuation", "meta.brace", "meta.delimiter"],                              "settings": { "foreground": "core/muted-foreground" } },
+    { "name": "Property (JSON key)",  "scope": ["support.type.property-name", "meta.object-literal.key", "meta.structure.dictionary.key"], "settings": { "foreground": "core/foreground" } },
+    { "name": "Invalid",              "scope": ["invalid", "invalid.illegal"],                                               "settings": { "foreground": "buttons/destructive" } },
+    { "name": "Deprecated",           "scope": ["invalid.deprecated"],                                                       "settings": { "foreground": "states/caution-foreground" } },
+    { "name": "Markdown heading",     "scope": ["markup.heading", "entity.name.section.markdown"],                           "settings": { "foreground": "core/foreground", "fontStyle": "bold" } },
+    { "name": "Markdown bold",        "scope": ["markup.bold"],                                                              "settings": { "fontStyle": "bold" } },
+    { "name": "Markdown italic",      "scope": ["markup.italic"],                                                            "settings": { "fontStyle": "italic" } },
+    { "name": "Markdown link",        "scope": ["markup.underline.link", "string.other.link"],                               "settings": { "foreground": "decorative/cyan", "fontStyle": "underline" } },
+    { "name": "Markdown code inline", "scope": ["markup.inline.raw", "markup.fenced_code"],                                  "settings": { "foreground": "buttons/primary" } },
+    { "name": "Diff added",           "scope": ["markup.inserted"],                                                          "settings": { "foreground": "states/success" } },
+    { "name": "Diff removed",         "scope": ["markup.deleted"],                                                           "settings": { "foreground": "buttons/destructive" } },
+    { "name": "Diff changed",         "scope": ["markup.changed"],                                                           "settings": { "foreground": "states/info" } }
+  ],
+  "semanticTokenColors": {
+    "namespace":         "decorative/cyan-accent",
+    "class":             "decorative/cyan-accent",
+    "interface":         "decorative/cyan-accent",
+    "type":              "decorative/cyan-accent",
+    "enum":              "decorative/fuscia",
+    "enumMember":        "decorative/fuscia",
+    "function":          "decorative/cyan",
+    "method":            "decorative/cyan",
+    "macro":             "decorative/purple",
+    "variable":          "core/foreground",
+    "parameter":         "core/foreground",
+    "property":          "core/foreground",
+    "keyword":           "decorative/purple",
+    "string":            "buttons/primary",
+    "number":            "decorative/cyan-accent",
+    "decorator":         "decorative/purple",
+    "*.deprecated":      { "strikethrough": true }
+  }
+}

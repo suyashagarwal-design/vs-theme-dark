@@ -1,0 +1,12 @@
+.context/**
+.git/**
+.gitignore
+.vscode/**
+node_modules/**
+scripts/**
+tokens/**
+icons/svg/**
+icons/icon-mapping.json
+fonts/*.ttf
+.vscodeignore
+*.vsix

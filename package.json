@@ -1,0 +1,66 @@
+{
+  "name": "hrds-dark",
+  "displayName": "HRDS Dark",
+  "description": "A VS Code theme + icon theme generated from the HackerRank Design System (HRDS).",
+  "version": "0.1.5",
+  "publisher": "hackerrank",
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "hrds",
+    "hackerrank"
+  ],
+  "main": "",
+  "scripts": {
+    "build": "node scripts/build-from-figma.mjs && node scripts/build-icons.mjs && node scripts/embed-fonts.mjs",
+    "build:theme": "node scripts/build-from-figma.mjs",
+    "build:icons": "node scripts/build-icons.mjs",
+    "build:fonts": "node scripts/embed-fonts.mjs",
+    "export-icons": "node scripts/export-icons.mjs",
+    "package": "vsce package",
+    "prepackage": "npm run build"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.0.0",
+    "geist": "^1.7.1",
+    "opentype.js": "^2.0.0"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "HRDS Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hrds-dark-color-theme.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "hrds-icons",
+        "label": "HRDS Icons",
+        "path": "./icons/hrds-icon-theme.json"
+      }
+    ],
+    "markdown.previewStyles": [
+      "./overrides/markdown-preview.css"
+    ],
+    "configurationDefaults": {
+      "editor.fontFamily": "'Geist Mono', 'SF Mono', Menlo, Consolas, monospace",
+      "terminal.integrated.fontFamily": "'Geist Mono', 'SF Mono', Menlo, Consolas, monospace",
+      "chat.editor.fontFamily": "'Geist Mono', 'SF Mono', Menlo, Consolas, monospace",
+      "debug.console.fontFamily": "'Geist Mono', 'SF Mono', Menlo, Consolas, monospace",
+      "notebook.output.fontFamily": "'Geist Mono', 'SF Mono', Menlo, Consolas, monospace",
+      "scm.inputFontFamily": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  }
+}

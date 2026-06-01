@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "source": "Figma file yIltK4T4z2tlZWjaMqlZTW — HRDS Definition · styles/text/*",
+    "substitution-rule": "Family swapped per project requirement: Sans→Geist, Mono→Geist Mono, Markdown headings→Kalice. All other properties (size, weight, line-height, letter-spacing) are preserved verbatim from HRDS.",
+    "note": "Numeric values marked `TBD:figma` must be resolved from the Figma styles before build."
+  },
+  "fontFamilies": {
+    "sans": "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    "mono": "'Geist Mono', 'SF Mono', Menlo, Consolas, monospace",
+    "serif": "'Kalice', 'New York', Georgia, serif"
+  },
+  "styles": {
+    "IDE/Sans/Text/3Xsmall": {
+      "fontFamily": "sans",
+      "fontSize": "9px",
+      "fontWeight": 400,
+      "lineHeight": "9px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Sans/Text/2Xsmall": {
+      "fontFamily": "sans",
+      "fontSize": "10px",
+      "fontWeight": 400,
+      "lineHeight": "10px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Sans/Text/Xsmall": {
+      "fontFamily": "sans",
+      "fontSize": "11px",
+      "fontWeight": 400,
+      "lineHeight": "11px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Sans/Text/Small": {
+      "fontFamily": "sans",
+      "fontSize": "12px",
+      "fontWeight": 400,
+      "lineHeight": "16px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Sans/Text/Default": {
+      "fontFamily": "sans",
+      "fontSize": "13px",
+      "fontWeight": 400,
+      "lineHeight": "16px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Sans/Text/Large": {
+      "fontFamily": "sans",
+      "fontSize": "15px",
+      "fontWeight": 400,
+      "lineHeight": "20px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Sans/Text/Reading": {
+      "fontFamily": "sans",
+      "fontSize": "16px",
+      "fontWeight": 400,
+      "lineHeight": "24px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist"
+    },
+    "IDE/Mono/2Xsmall": {
+      "fontFamily": "mono",
+      "fontSize": "10px",
+      "fontWeight": 400,
+      "lineHeight": "10px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist Mono"
+    },
+    "IDE/Mono/Xsmall": {
+      "fontFamily": "mono",
+      "fontSize": "11px",
+      "fontWeight": 400,
+      "lineHeight": "20px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist Mono"
+    },
+    "IDE/Mono/Small": {
+      "fontFamily": "mono",
+      "fontSize": "12px",
+      "fontWeight": 400,
+      "lineHeight": "20px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist Mono"
+    },
+    "IDE/Mono/Default": {
+      "fontFamily": "mono",
+      "fontSize": "13px",
+      "fontWeight": 400,
+      "lineHeight": "20px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist Mono"
+    },
+    "IDE/Mono/Large": {
+      "fontFamily": "mono",
+      "fontSize": "18px",
+      "fontWeight": 400,
+      "lineHeight": "28px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Geist Mono"
+    },
+    "AI Markdown text/Paragraph": {
+      "fontFamily": "sans",
+      "fontSize": "16px",
+      "fontWeight": 400,
+      "lineHeight": "24px",
+      "letterSpacing": "0.4000000059604645px",
+      "_figmaFontFamily": "Satoshi Variable"
+    },
+    "AI Markdown text/H3": {
+      "fontFamily": "serif",
+      "fontSize": "16px",
+      "fontWeight": 500,
+      "lineHeight": "24px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Satoshi Variable"
+    },
+    "AI Markdown text/H2": {
+      "fontFamily": "serif",
+      "fontSize": "18px",
+      "fontWeight": 500,
+      "lineHeight": "24px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Satoshi Variable"
+    },
+    "AI Markdown text/H1": {
+      "fontFamily": "serif",
+      "fontSize": "20px",
+      "fontWeight": 500,
+      "lineHeight": "28px",
+      "letterSpacing": "0",
+      "_figmaFontFamily": "Satoshi Variable"
+    }
+  },
+  "vscodeApplication": {
+    "editor.fontFamily-from": "IDE/Mono/Default",
+    "editor.fontSize-from": "IDE/Mono/Default",
+    "editor.fontWeight-from": "IDE/Mono/Default",
+    "editor.lineHeight-from": "IDE/Mono/Default",
+    "terminal.integrated.fontFamily-from": "IDE/Mono/Default",
+    "terminal.integrated.fontSize-from": "IDE/Mono/Xsmall",
+    "terminal.integrated.lineHeight-from": "IDE/Mono/Xsmall",
+    "debug.console.fontFamily-from": "IDE/Mono/Xsmall",
+    "debug.console.fontSize-from": "IDE/Mono/Xsmall",
+    "notebook.output.fontFamily-from": "IDE/Mono/Xsmall",
+    "chat.editor.fontFamily-from": "IDE/Mono/Default",
+    "scm.inputFontFamily-from": "IDE/Sans/Text/Default",
+    "scm.inputFontSize-from": "IDE/Sans/Text/Default",
+    "workbench.sidebar-from": "IDE/Sans/Text/Small",
+    "workbench.tabLabel-from": "IDE/Sans/Text/Small",
+    "workbench.commandPalette-from": "IDE/Sans/Text/Small",
+    "workbench.statusBar-from": "IDE/Sans/Text/3Xsmall",
+    "workbench.titleBar-from": "IDE/Sans/Text/Xsmall",
+    "workbench.breadcrumb-from": "IDE/Sans/Text/2Xsmall",
+    "workbench.settingsBody-from": "IDE/Sans/Text/Default",
+    "workbench.hoverPopover-from": "IDE/Sans/Text/Reading",
+    "markdownPreview.h1-from": "AI Markdown text/H1",
+    "markdownPreview.h2-from": "AI Markdown text/H2",
+    "markdownPreview.h3-from": "AI Markdown text/H3",
+    "markdownPreview.body-from": "AI Markdown text/Paragraph"
+  }
+}
