@@ -32,24 +32,35 @@ const FONT_MAP = [
   { file: "GeistMono-Medium.woff2",   family: "Geist Mono", weight: 500 }
 ];
 
+// mime + CSS format() keyword per file extension (woff2 preferred; otf/ttf work as data URIs too).
+function fontType (file) {
+  if (/\.woff2$/i.test(file)) return { mime: "font/woff2",    fmt: "woff2" };
+  if (/\.otf$/i.test(file))   return { mime: "font/otf",      fmt: "opentype" };
+  if (/\.ttf$/i.test(file))   return { mime: "font/ttf",      fmt: "truetype" };
+  if (/\.woff$/i.test(file))  return { mime: "font/woff",     fmt: "woff" };
+  return null;
+}
+
 async function main () {
   const present = new Set(await readdir(fontsDir));
 
-  // Auto-discover any Kalice woff2 dropped into fonts/ (weight from filename, else 500).
-  const kaliceFiles = [...present].filter(f => /^kalice.*\.woff2$/i.test(f));
+  // Auto-discover any Kalice font dropped into fonts/ (.woff2/.otf/.ttf; weight from filename, else 400).
+  const kaliceFiles = [...present].filter(f => /^kalice.*\.(woff2|otf|ttf|woff)$/i.test(f));
   for (const file of kaliceFiles) {
     const m = file.match(/(\d{3})/);
-    FONT_MAP.push({ file, family: "Kalice", weight: m ? Number(m[1]) : 500 });
+    FONT_MAP.push({ file, family: "Kalice", weight: m ? Number(m[1]) : 400 });
   }
 
   const blocks = [];
   let embedded = 0;
   for (const { file, family, weight } of FONT_MAP) {
     if (!present.has(file)) { continue; }
+    const t = fontType(file);
+    if (!t) continue;
     const b64 = (await readFile(join(fontsDir, file))).toString("base64");
     blocks.push(
       `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};` +
-      `font-display:swap;src:url(data:font/woff2;base64,${b64}) format('woff2');}`
+      `font-display:swap;src:url(data:${t.mime};base64,${b64}) format('${t.fmt}');}`
     );
     embedded++;
   }

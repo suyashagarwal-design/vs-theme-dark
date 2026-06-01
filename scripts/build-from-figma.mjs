@@ -93,8 +93,8 @@ function buildWorkbenchColors (r) {
     "window.inactiveBorder":                         r("core/background"),
 
     // ─── Text ─────────────────────────────────────────────────────────────
-    "textLink.foreground":                           r("decorative/cyan"),
-    "textLink.activeForeground":                     r("decorative/cyan-accent"),
+    "textLink.foreground":                           r("buttons/primary"),
+    "textLink.activeForeground":                     r("buttons/primary-hover"),
     "textBlockQuote.background":                     r("core/muted"),
     "textBlockQuote.border":                         r("decorative/cyan"),
     "textCodeBlock.background":                      r("core/muted"),
@@ -133,14 +133,6 @@ function buildWorkbenchColors (r) {
     "welcomePage.progressBackground":                r("core/muted"),
     "welcomePage.progressForeground":                r("decorative/cyan"),
     "walkThrough.embeddedEditorBackground":          r("surfaces/card"),
-
-    // ─── Chat / AI region (DS purple = the AI/agent color) ────────────────
-    "chat.requestBorder":                            r("decorative/purple"),
-    "chat.slashCommandForeground":                   r("decorative/purple"),
-    "chat.slashCommandBackground":                   r("core/muted"),
-    "chat.avatarForeground":                         r("decorative/purple"),
-    "chat.editedFileForeground":                     r("decorative/purple"),
-    "inlineChat.border":                             r("decorative/purple"),
 
     // ─── Dropdown / Inputs ────────────────────────────────────────────────
     "dropdown.background":                           r("surfaces/popover"),

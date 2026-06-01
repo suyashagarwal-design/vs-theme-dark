@@ -2,7 +2,7 @@
   "name": "hrds-dark",
   "displayName": "HRDS Dark",
   "description": "A VS Code theme + icon theme generated from the HackerRank Design System (HRDS).",
-  "version": "0.1.5",
+  "version": "0.1.11",
   "publisher": "hackerrank",
   "license": "UNLICENSED",
   "engines": {
@@ -19,9 +19,10 @@
   ],
   "main": "",
   "scripts": {
-    "build": "node scripts/build-from-figma.mjs && node scripts/build-icons.mjs && node scripts/embed-fonts.mjs",
+    "build": "node scripts/build-from-figma.mjs && node scripts/build-icons.mjs && node scripts/build-markdown-css.mjs && node scripts/embed-fonts.mjs",
     "build:theme": "node scripts/build-from-figma.mjs",
     "build:icons": "node scripts/build-icons.mjs",
+    "build:markdown": "node scripts/build-markdown-css.mjs",
     "build:fonts": "node scripts/embed-fonts.mjs",
     "export-icons": "node scripts/export-icons.mjs",
     "package": "vsce package",

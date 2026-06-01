@@ -88,6 +88,22 @@ async function main () {
     await writeFile(join(root, "tokens/tokens.json"), JSON.stringify(tokens, null, 2) + "\n");
     console.log(`✓ tokens.json: filled ${filled} hex values; ${missing.length} still missing`);
     if (missing.length) console.warn("  missing:", missing.join(", "));
+
+    // ─── Font-size scale (font/font size/* FLOAT) → tokens/font-sizes.json ──
+    const sizes = {};
+    for (const v of Object.values(variables)) {
+      const m = v.name.match(/^font\/font size\/(.+)$/);
+      if (!m) continue;
+      const px = resolveVar(v);
+      if (typeof px === "number") sizes[m[1]] = `${px}px`;
+    }
+    if (Object.keys(sizes).length) {
+      const out = { _meta: { source: "HRDS Definition · CSS Variables · font/font size/*", note: "Resolved px values of the DS font-size scale." }, sizes };
+      await writeFile(join(root, "tokens/font-sizes.json"), JSON.stringify(out, null, 2) + "\n");
+      console.log(`✓ font-sizes.json: ${Object.keys(sizes).length} sizes → ${Object.entries(sizes).map(([k,v])=>k+":"+v).join(", ")}`);
+    } else {
+      console.warn("⚠ no font/font size/* variables resolved");
+    }
   } catch (err) {
     if (/file_variables:read/.test(err.message)) {
       console.warn("⚠ skipping variables: token lacks file_variables:read scope. Re-generate the PAT with that scope to fill color hexes.");
