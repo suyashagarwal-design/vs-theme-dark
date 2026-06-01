@@ -39,6 +39,10 @@ Surfaces follow the HRDS depth scale: editor/title bar `core/background` `#14141
 - **Language file-type badges** (`TS TSX JS JSX PY GO RS RB PHP C C++ C#`) — filled HRDS-colored chips with the abbreviation rendered as **vector paths** (Geist Mono outlines baked in), so they need no installed font and look identical everywhere.
 - **Formats** use recolored Lucide glyphs (`{}` JSON, `<>` markup, terminal, table, database, etc.), colored by the nearest HRDS token to the Seti convention.
 - **Folders have no icon** (chevron only), Seti-style, to keep the tree uncluttered.
+- **Sizing** — every icon is drawn on a 20-unit grid padded into a 24-unit viewBox, so it renders ~17% smaller inside VS Code's fixed icon slot (calmer, less cluttered). This is baked into the SVGs, so it applies with no Custom CSS. Tune via `PAD` in `scripts/build-icons.mjs`.
+
+### Tree spacing
+The theme sets `workbench.tree.indent` to `14` (via `configurationDefaults`) so the indent guide isn't crowding the child file icons. No setup required — it applies on install.
 
 ### Typography
 | Surface | Font | Sizing |
@@ -73,17 +77,27 @@ To add or replace a font, drop the file into `fonts/` and run `npm run build:fon
 
 ## Optional: workbench CSS tweaks
 
-A few things the theme API can't express — the UI font (Geist), rounded tab corners, a tighter title bar, and tooltip sizing — are delivered through the [Custom CSS and JS Loader](https://marketplace.visualstudio.com/items?itemName=be5invis.vscode-custom-css). Add to `settings.json`:
+A few things the theme API can't express are delivered through the [Custom CSS and JS Loader](https://marketplace.visualstudio.com/items?itemName=be5invis.vscode-custom-css):
+
+- UI font (Geist) across the workbench chrome, and tooltip sizing
+- Rounded tab corners and a tighter title bar
+- A smaller tree expand/collapse chevron (it's a codicon font glyph — not resizable by the theme)
+- **Keyboard-only tree focus ring** — the green focus outline is hidden on mouse click (the selection background already marks the row) and restored when you navigate by keyboard, so the accessibility affordance stays where it matters
+
+Add **both** imports to `settings.json` — the CSS *and* the small JS helper that drives the keyboard-only focus ring:
 
 ```jsonc
 {
   "vscode_custom_css.imports": [
-    "file:///<absolute-path-to-this-extension>/overrides/hrds-dark.css"
+    "file:///<absolute-path-to-this-extension>/overrides/hrds-dark.css",
+    "file:///<absolute-path-to-this-extension>/overrides/hrds-input-modality.js"
   ]
 }
 ```
 
-Then `Cmd+Shift+P → Enable Custom CSS and JS` and reload. VS Code will warn "installation appears corrupt" — that's the expected checksum notice; dismiss it via the gear → "Don't Show Again". Re-run "Enable Custom CSS and JS" after any update to `hrds-dark.css`.
+Then `Cmd+Shift+P → Enable Custom CSS and JS` and reload. VS Code will warn "installation appears corrupt" — that's the expected checksum notice; dismiss it via the gear → "Don't Show Again". **Re-run "Enable Custom CSS and JS" after any change to these files** — the loader bakes their contents in at enable-time, so a plain reload won't pick up edits.
+
+> **Why the JS file?** VS Code focuses its tree programmatically, and in its Electron build CSS `:focus-visible` reports keyboard-focus even on a mouse click — so it can't distinguish the two. `hrds-input-modality.js` tracks the real input modality and toggles `html.hrds-pointer` / `html.hrds-keyboard`, which the CSS keys off. It's tiny, fails safe (never throws into the workbench), and only affects the focus ring. Skip it and the ring simply shows on every focus, as VS Code does by default.
 
 ## Build pipeline
 
